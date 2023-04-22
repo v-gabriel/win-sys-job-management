@@ -31,7 +31,7 @@ static extern bool CloseHandle(IntPtr handle);
 
 ### Mock thread counter
 
-The app runs spawns a separate counter thread which can be paused and resumed, therefore affecting the total counter displayed on the GUI.
+The app runs a separate counter thread which can be paused and resumed, therefore affecting the total counter displayed on the GUI.
 
 <br>
 
