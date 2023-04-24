@@ -1,6 +1,6 @@
 ﻿namespace SysJobApp
 {
-    partial class Form1
+    partial class SysJobAppMainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -33,13 +33,14 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.processes_refreshBtn = new System.Windows.Forms.Button();
+            this.main_threadProtectionChecbox = new System.Windows.Forms.CheckBox();
             this.thread_listView = new System.Windows.Forms.ListBox();
             this.process_listView = new System.Windows.Forms.ListBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.threads_resumeAllBtn = new System.Windows.Forms.Button();
             this.threads_resumeSelectedBtn = new System.Windows.Forms.Button();
-            this.threads_pauseAllBtn = new System.Windows.Forms.Button();
             this.threads_pauseSelectedBtn = new System.Windows.Forms.Button();
+            this.threads_resumeAllBtn = new System.Windows.Forms.Button();
+            this.threads_pauseAllBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.mockThread_valueLabel = new System.Windows.Forms.Label();
@@ -100,6 +101,7 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.processes_refreshBtn);
+            this.flowLayoutPanel2.Controls.Add(this.main_threadProtectionChecbox);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 464);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -117,6 +119,18 @@
             this.processes_refreshBtn.UseVisualStyleBackColor = true;
             this.processes_refreshBtn.Click += new System.EventHandler(this.processes_refreshBtn_Click);
             // 
+            // main_threadProtectionChecbox
+            // 
+            this.main_threadProtectionChecbox.AutoSize = true;
+            this.main_threadProtectionChecbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.main_threadProtectionChecbox.Location = new System.Drawing.Point(84, 3);
+            this.main_threadProtectionChecbox.Name = "main_threadProtectionChecbox";
+            this.main_threadProtectionChecbox.Size = new System.Drawing.Size(207, 25);
+            this.main_threadProtectionChecbox.TabIndex = 1;
+            this.main_threadProtectionChecbox.Text = "Block app main thread suspension";
+            this.main_threadProtectionChecbox.UseVisualStyleBackColor = true;
+            this.main_threadProtectionChecbox.CheckedChanged += new System.EventHandler(this.main_threadProtectionChecbox_CheckedChanged);
+            // 
             // thread_listView
             // 
             this.thread_listView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -127,7 +141,6 @@
             this.thread_listView.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.thread_listView.Size = new System.Drawing.Size(393, 455);
             this.thread_listView.TabIndex = 2;
-            this.thread_listView.SelectedIndexChanged += new System.EventHandler(this.thread_listView_SelectedIndexChanged);
             // 
             // process_listView
             // 
@@ -143,31 +156,20 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.Controls.Add(this.threads_resumeAllBtn);
             this.flowLayoutPanel1.Controls.Add(this.threads_resumeSelectedBtn);
-            this.flowLayoutPanel1.Controls.Add(this.threads_pauseAllBtn);
             this.flowLayoutPanel1.Controls.Add(this.threads_pauseSelectedBtn);
+            this.flowLayoutPanel1.Controls.Add(this.threads_resumeAllBtn);
+            this.flowLayoutPanel1.Controls.Add(this.threads_pauseAllBtn);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(401, 464);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(393, 41);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
-            // threads_resumeAllBtn
-            // 
-            this.threads_resumeAllBtn.AutoSize = true;
-            this.threads_resumeAllBtn.Location = new System.Drawing.Point(3, 3);
-            this.threads_resumeAllBtn.Name = "threads_resumeAllBtn";
-            this.threads_resumeAllBtn.Size = new System.Drawing.Size(75, 25);
-            this.threads_resumeAllBtn.TabIndex = 0;
-            this.threads_resumeAllBtn.Text = "Resume all";
-            this.threads_resumeAllBtn.UseVisualStyleBackColor = true;
-            this.threads_resumeAllBtn.Click += new System.EventHandler(this.threads_resumeAllBtn_Click);
-            // 
             // threads_resumeSelectedBtn
             // 
             this.threads_resumeSelectedBtn.AutoSize = true;
-            this.threads_resumeSelectedBtn.Location = new System.Drawing.Point(84, 3);
+            this.threads_resumeSelectedBtn.Location = new System.Drawing.Point(3, 3);
             this.threads_resumeSelectedBtn.Name = "threads_resumeSelectedBtn";
             this.threads_resumeSelectedBtn.Size = new System.Drawing.Size(105, 25);
             this.threads_resumeSelectedBtn.TabIndex = 1;
@@ -175,27 +177,38 @@
             this.threads_resumeSelectedBtn.UseVisualStyleBackColor = true;
             this.threads_resumeSelectedBtn.Click += new System.EventHandler(this.threads_resumeSelectedBtn_Click);
             // 
-            // threads_pauseAllBtn
-            // 
-            this.threads_pauseAllBtn.AutoSize = true;
-            this.threads_pauseAllBtn.Location = new System.Drawing.Point(195, 3);
-            this.threads_pauseAllBtn.Name = "threads_pauseAllBtn";
-            this.threads_pauseAllBtn.Size = new System.Drawing.Size(75, 25);
-            this.threads_pauseAllBtn.TabIndex = 2;
-            this.threads_pauseAllBtn.Text = "Pause all";
-            this.threads_pauseAllBtn.UseVisualStyleBackColor = true;
-            this.threads_pauseAllBtn.Click += new System.EventHandler(this.threads_pauseAllBtn_Click);
-            // 
             // threads_pauseSelectedBtn
             // 
             this.threads_pauseSelectedBtn.AutoSize = true;
-            this.threads_pauseSelectedBtn.Location = new System.Drawing.Point(276, 3);
+            this.threads_pauseSelectedBtn.Location = new System.Drawing.Point(114, 3);
             this.threads_pauseSelectedBtn.Name = "threads_pauseSelectedBtn";
             this.threads_pauseSelectedBtn.Size = new System.Drawing.Size(94, 25);
             this.threads_pauseSelectedBtn.TabIndex = 3;
             this.threads_pauseSelectedBtn.Text = "Pause selected";
             this.threads_pauseSelectedBtn.UseVisualStyleBackColor = true;
             this.threads_pauseSelectedBtn.Click += new System.EventHandler(this.threads_pauseSelectedBtn_Click);
+            // 
+            // threads_resumeAllBtn
+            // 
+            this.threads_resumeAllBtn.AutoSize = true;
+            this.threads_resumeAllBtn.Location = new System.Drawing.Point(214, 3);
+            this.threads_resumeAllBtn.Name = "threads_resumeAllBtn";
+            this.threads_resumeAllBtn.Size = new System.Drawing.Size(75, 25);
+            this.threads_resumeAllBtn.TabIndex = 0;
+            this.threads_resumeAllBtn.Text = "Resume all";
+            this.threads_resumeAllBtn.UseVisualStyleBackColor = true;
+            this.threads_resumeAllBtn.Click += new System.EventHandler(this.threads_resumeAllBtn_Click);
+            // 
+            // threads_pauseAllBtn
+            // 
+            this.threads_pauseAllBtn.AutoSize = true;
+            this.threads_pauseAllBtn.Location = new System.Drawing.Point(295, 3);
+            this.threads_pauseAllBtn.Name = "threads_pauseAllBtn";
+            this.threads_pauseAllBtn.Size = new System.Drawing.Size(75, 25);
+            this.threads_pauseAllBtn.TabIndex = 2;
+            this.threads_pauseAllBtn.Text = "Pause all";
+            this.threads_pauseAllBtn.UseVisualStyleBackColor = true;
+            this.threads_pauseAllBtn.Click += new System.EventHandler(this.threads_pauseAllBtn_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -269,11 +282,11 @@
             this.mockThread_infoLabel.Text = "{mockThreadInfo}";
             this.mockThread_infoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Form1
+            // SysJobAppMainForm
             // 
             this.ClientSize = new System.Drawing.Size(803, 612);
             this.Controls.Add(this.tableLayoutPanel3);
-            this.Name = "Form1";
+            this.Name = "SysJobAppMainForm";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -308,5 +321,6 @@
         private Label label1;
         private Label mockThread_valueLabel;
         private Label mockThread_infoLabel;
+        private CheckBox main_threadProtectionChecbox;
     }
 }
