@@ -2,14 +2,12 @@
 
 Win forms app that imports the windows kernel32.dll for GUI process thread management.
 
-Contains a separate spawned mock counter thread for testing.
+> **Note** <br>
+App is setup to run with admin privileges. Use with caution.
 
 <br>
 
 ## Info
-
-> **__Note__** &nbsp; <br> App is setup to run with admin privileges. Blocking certain threads can easily cause the system to freeze.
-
 
 ### Thread management
 
@@ -29,20 +27,33 @@ static extern bool CloseHandle(IntPtr handle);
 - **Suspend**: kernel32.dll handle for opening and suspening selected threads
 - **Resume**: kernel32.dll handle for opening and resuming selected threads
 
-### Mock thread counter
+### Counter thread
 
-The app runs a separate counter thread which can be paused and resumed, therefore affecting the total counter displayed on the GUI.
+Separate counter thread which can be used for suspend/ resume testing.
 
+Counts to 100.
+
+### Rollback thread
+ 
+Standalone rollback service which triggers a resume operation on suspended threads.
+
+Triggers every 10 seconds.
+ 
 <br>
 
 ## Demo
 
 Getting app process, stopping and resuming mock thread execution.
 
+//TODO
 
-https://user-images.githubusercontent.com/72694712/233787078-3f15c553-5695-4f57-b78a-5cb95e28b938.mp4
+Blocking system threads, waiting for rollback thread to resume.
 
+//TODO
 
+Closing main window, waiting for thread cleanup.
+
+//TODO
   
 <br>
 
@@ -64,6 +75,12 @@ https://user-images.githubusercontent.com/72694712/233787078-3f15c553-5695-4f57-
 Other:
 
 - [Stackoverflow - Killing/ aborting a specific thread using it's ID in C#](https://stackoverflow.com/questions/28295619/killing-aborting-a-specific-thread-using-its-id-in-c-sharp)
+
+<br>
+
+## Appendix
+
+- [Process explorer](https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer)
 
 <br>
 
