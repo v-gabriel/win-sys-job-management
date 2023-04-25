@@ -125,11 +125,9 @@ namespace SysJobApp
                 return;
             }
 
-            this.MapSelectedThreads();
-
-            foreach (var thread in this.selectedThreads)
+            for (int i = 0; i < threads.Count; i++)
             {
-                ProcessThreadHandlerService.HandleResumeThread(thread.Id);
+                ProcessThreadHandlerService.HandleResumeThread(threads[i].Id);
             }
 
             UpdateProcessesList();
@@ -142,9 +140,11 @@ namespace SysJobApp
                 return;
             }
 
-            for (int i = 0; i < threads.Count; i++)
+            this.MapSelectedThreads();
+
+            foreach (var thread in this.selectedThreads)
             {
-                ProcessThreadHandlerService.HandleResumeThread(threads[i].Id);
+                ProcessThreadHandlerService.HandleResumeThread(thread.Id);
             }
 
             UpdateProcessesList();
